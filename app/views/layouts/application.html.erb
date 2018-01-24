@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>OffDoon</title>
+    <title>ｵﾌﾄﾞｩｰﾝ</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,17 @@
   </head>
 
   <body>
+  	<div class="base">
+  	<div class="header">
+  	<h1><%= image_tag 'doon_logo2.png', class: 'logo' %>
+  		<p class="logo_title">マストドン用オフ会調整システム</p>
+  	</h1>
+  	</div>
+  	<div class="body">
     <%= yield %>
+    </div>
+    <div class="footer">
+    	<p>OffDoon for Mastodon © 2018 <a href="https://mstdn-workers.com/@rin_souma" target="_blank">@rin_souma@mstdn-workers.com</a></p>
+    </div>
   </body>
 </html>

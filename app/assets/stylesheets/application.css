@@ -13,3 +13,94 @@
  *= require_tree .
  *= require_self
  */
+html{
+	height: 100%;
+}
+body{
+/*	background-image: url(p_da0632_l_da06320.png); */
+	background-color: rgb(25,27,34);
+	height: 100%;
+	color: white;
+}
+
+h1{
+	border-bottom: 4px solid rgb(25,27,34);
+	margin: 10px;
+}
+
+a:link {
+	color: rgb(217,225,232);
+}
+a:visited {
+	color: rgb(217,225,232);
+}
+a:hover {
+	color: rgb(217,225,232);
+}
+a:active {
+	color: rgb(217,225,232);
+}
+
+
+.logo {
+	width:300px;
+	height:100px;
+	margin: 10px 0px 0px 0px;
+}
+
+.logo_title{
+	font-size:18px;
+	font-family: 'メイリオ', Meiryo,'ヒラギノ角ゴシック','Hiragino Sans','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3', sans-serif; 
+	position: absolute;
+	bottom: 0;	
+	right: 0;
+	margin-right:20px;
+	margin-bottom:30px;
+	color: white;
+	}
+div.header{
+	padding: 10px;
+	border-radius: 20px;
+	position:relative;
+}
+
+div.base{
+	background-color: rgba(40,44,55,0.95);
+	border-radius: 20px;
+	margin: 10px auto;
+	width:800px;
+	min-height:100%;
+	overflow: hidden;
+}
+
+div.body{
+	padding: 10px 20px;
+	min-height:100%;
+	overflow: hidden;
+}
+
+div.main_left{
+	float:left;
+	width:500px;
+	background-color: rgba(68,75,93,0.95);
+	min-height:600px;
+	padding-bottom : 32767px;
+	margin-bottom : -32767px;
+}
+div.main_right{
+	float:right;
+	width:250px;
+	background-color: rgba(68,75,93,0.95);
+	min-height:600px;
+	padding-bottom : 32767px;
+	margin-bottom : -32767px;
+}
+
+div.footer{
+	margin-top:40px;
+	width:100%;
+}
+div.footer p{
+	font-size:12px;
+	text-align: center;
+}

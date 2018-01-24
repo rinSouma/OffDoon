@@ -1,0 +1,10 @@
+<ul>
+	
+<li><%= @auth.provider %></li>
+<li><%= @auth.credentials.token %></li>
+<li><%= @auth.extra.raw_info.acct %></li>
+<li><%= @auth.extra.raw_info.display_name %></li>
+<li><%= @auth.extra.raw_info.id %></li>
+
+</ul>
+<%= image_tag @auth.extra.raw_info.avatar %>
