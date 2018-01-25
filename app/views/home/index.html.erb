@@ -1,5 +1,7 @@
 <div class="main_left">
-	<h2>ｵﾌﾄﾞｩｰﾝ</h2>
+	<div>
+		<br>ｵﾌﾄﾞｩｰﾝ
+	</div>
 	<ul>
 	<% @events.each do |event| %>
 		<li class="event_list">
@@ -10,7 +12,9 @@
 </div>
 	
 <div class="main_right">
-	<h2>右側メニュー</h2>
-	<%= %>
+	<%= link_to "ログイン", '/auth/mastodon', class: 'btn btn-default' %>
+	<% if @user %>
+		<p><%= @user.display_name %></p>
+	<% end %>
 </div>
 

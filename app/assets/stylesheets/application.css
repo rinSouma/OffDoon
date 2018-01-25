@@ -81,19 +81,30 @@ div.body{
 
 div.main_left{
 	float:left;
-	width:500px;
+	width:490px;
 	background-color: rgba(68,75,93,0.95);
 	min-height:600px;
 	padding-bottom : 32767px;
 	margin-bottom : -32767px;
+	padding-left : 10px;
 }
+
+div.main_left > div{
+	padding 10px;
+}
+
 div.main_right{
 	float:right;
-	width:250px;
+	width:240px;
 	background-color: rgba(68,75,93,0.95);
 	min-height:600px;
 	padding-bottom : 32767px;
 	margin-bottom : -32767px;
+	padding-left : 10px;
+}
+
+div.main_right > p{
+	padding 10px;
 }
 
 div.footer{
