@@ -27,5 +27,6 @@ class LoginController < ApplicationController
       #セッションに登録
       session[:uid] = uid
       session[:token] = auth.credentials.token
+      session[:id] = auth.extra.raw_info.id
     end
 end

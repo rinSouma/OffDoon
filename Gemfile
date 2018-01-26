@@ -50,7 +50,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Mastodon認証用
-gem 'mastodon-api', require: 'mastodon'
+gem 'mastodon-api', require: 'mastodon', github: "tootsuite/mastodon-api"
 gem 'omniauth-mastodon'
 gem 'omniauth'
 
