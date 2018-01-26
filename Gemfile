@@ -54,3 +54,5 @@ gem 'mastodon-api', require: 'mastodon'
 gem 'omniauth-mastodon'
 gem 'omniauth'
 
+#stylesheet_tagが動かないのです
+gem 'coffee-script-source', '1.8.0'

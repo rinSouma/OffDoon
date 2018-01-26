@@ -19,12 +19,13 @@ class LoginController < ApplicationController
           display_name: auth.extra.raw_info.display_name,
           avatar: auth.extra.raw_info.avatar_static,
           url: auth.extra.raw_info.url,
-          token: auth.credentials.token,
+          #token: auth.credentials.token,
           domain: domain
         )
       end
       
       #セッションに登録
       session[:uid] = uid
+      session[:token] = auth.credentials.token
     end
 end
