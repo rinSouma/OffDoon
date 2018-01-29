@@ -95,16 +95,15 @@ div.main_left > div{
 
 div.main_right{
 	float:right;
-	width:240px;
+	width:250px;
 	background-color: rgba(68,75,93,0.95);
 	min-height:600px;
 	padding-bottom : 32767px;
 	margin-bottom : -32767px;
-	padding-left : 10px;
 }
 
-div.main_right > p{
-	padding 10px;
+div.right_box {
+	margin:10px;
 }
 
 div.footer{
@@ -115,3 +114,34 @@ div.footer p{
 	font-size:12px;
 	text-align: center;
 }
+
+.icon_img {
+	width:50px;
+	height:50px;
+	border-radius: 10px;
+	vertical-align:middle;
+}
+
+.new_event{
+	width:230px;
+	height:50px;
+}
+.new_event:hover{
+	background-image: url(new_event_hover.png);
+}
+
+.link_img{
+	width:230px;
+	height:50px;
+    background-color:rgb(255,255,255);
+    display:block;
+	border-radius: 11px;
+}
+
+.link_img:hover img {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  -ms-filter: "alpha(opacity=80)";
+}
+
+
