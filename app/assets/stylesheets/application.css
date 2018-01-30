@@ -21,6 +21,7 @@ body{
 	background-color: rgb(25,27,34);
 	height: 100%;
 	color: white;
+	font-size: 14px;
 }
 
 h1{
@@ -122,12 +123,9 @@ div.footer p{
 	vertical-align:middle;
 }
 
-.new_event{
+.link_button{
 	width:230px;
 	height:50px;
-}
-.new_event:hover{
-	background-image: url(new_event_hover.png);
 }
 
 .link_img{
@@ -144,4 +142,60 @@ div.footer p{
   -ms-filter: "alpha(opacity=80)";
 }
 
+.input_text {
+	width:450px;
+	padding:1px;
+	margin-bottom:20px;
+}
 
+.input_text_area {
+	width:450px;
+	height:10em;
+	padding:1px;
+	margin-bottom:20px;
+	resize: none;
+}
+
+.input_number {
+	width:50px;
+	padding:1px;
+	margin-bottom:20px;
+}
+
+.date_time {
+	padding:1px;
+	margin-bottom:20px;
+}
+
+.input_radio{
+	padding:1px;
+	margin-bottom:20px;
+	
+}
+.radio_text {
+	display: inline;
+}
+
+.submit_button {
+	margin-top:20px;
+	padding:1px;
+	width:120px;
+	height:30px;
+	background-color:rgb(37,136,208);
+	color:rgb(255,255,255);
+	border:none;
+	border-radius: 6px;
+}
+
+.submit_button:hover {
+	background-color:rgb(81,160,217);
+	cursor : pointer;
+}
+
+.field_with_errors {
+	display: inline;
+}
+
+.err_msg {
+	color:rgb(255,128,128);
+}

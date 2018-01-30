@@ -1,4 +1,3 @@
-<div class="main_left">
 	<div>
 		<br>ｵﾌﾄﾞｩｰﾝ
 	</div>
@@ -9,18 +8,3 @@
 		</li>	
 	<% end %>	
 	</ul>
-</div>
-	
-<div class="main_right">
-	<% if @user %>
-		<div class="right_box">
-			<%= image_tag @user.avatar, :class => "icon_img" %> <%= @user.display_name %>さん
-		</div>
-		<div class="right_box">
-			<%= link_to image_tag('new_event.png', class: 'new_event'), root_path, class:'link_img' %>
-		</div>
-	<% else %>
-		<%= link_to "ログイン", '/auth/mastodon', class: 'btn btn-default' %>
-	<% end %>
-</div>
-

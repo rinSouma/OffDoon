@@ -1,0 +1,31 @@
+<h2>イベント作成</h2>
+<%= form_for @event, url: home_index_path do |f| %>
+<%= f.text_field :title, placeholder: 'タイトル', class:'input_text' %>
+<%= f.text_area  :detail, placeholder: '詳細', class:'input_text_area' %>
+<%= f.text_field :place, placeholder: '場所', class:'input_text' %>
+<%= f.text_field :url, placeholder: 'URL', class:'input_text' %>
+<br>
+開催日　：<%== sprintf(f.datetime_select(:date, {use_month_numbers: true, start_year: Date.today.year, end_year: Date.today.year + 10, date_separator: '%s', datetime_separator: '%s', time_separator: '%s'}, {class: 'date_time'}), '年', '月', '日', '時') + '分' %>
+<br>
+参加上限：<%= f.number_field :limit, {class:'input_number'} %>
+<br>
+回答期限：<%== sprintf(f.datetime_select(:close_time, {use_month_numbers: true, start_year: Date.today.year, end_year: Date.today.year + 10, date_separator: '%s', datetime_separator: '%s', time_separator: '%s'}, {class: 'date_time'}), '年', '月', '日', '時') + '分' %>
+<br>
+<label class='input_radio'><%= f.radio_button :view, 0, :checked => true %><p class = 'radio_text'>全体公開</p></label>
+<br>
+<label class='input_radio'><%= f.radio_button :view, 1 %><p class = 'radio_text'>ログインユーザにのみ公開</p></label>
+<br>
+<label class='input_radio'><%= f.radio_button :view, 2 %><p class = 'radio_text'>同インスタンスのユーザにのみ公開</p></label>
+<br>
+<%= f.submit 'イベントを登録', class: 'submit_button' %>
+<% end %>
+
+<% if @event %>
+<% if @event.errors.any? %>
+	<ul>
+    <% @event.errors.full_messages.each do |msg| %>
+      <li class='err_msg'><%= msg %></li>
+    <% end %>
+    </ul>
+<% end %>
+<% end %>

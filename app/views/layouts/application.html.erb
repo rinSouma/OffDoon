@@ -16,8 +16,28 @@
   	</h1>
   	</div>
   	<div class="body">
-    <%= yield %>
-    </div>
+
+		<div class="main_left">
+		    <%= yield %>
+		</div>
+		
+		<div class="main_right">
+			<% if @user %>
+				<div class="right_box">
+					<%= image_tag @user.avatar, :class => "icon_img" %> <%= @user.display_name %>さん
+				</div>
+				<div class="right_box">
+					<%= link_to image_tag('new_event.png', class: 'link_button'), { :controller => :home, :action => :new }, class:'link_img' %>
+				</div>
+				<div class="right_box">
+					<%= link_to image_tag('my_event.png', class: 'link_button'), root_path, class:'link_img' %>
+				</div>
+			<% else %>
+				<%= link_to "ログイン", '/auth/mastodon', class: 'btn btn-default' %>
+			<% end %>
+		</div>
+
+	</div>
     <div class="footer">
     	<p>OffDoon for Mastodon © 2018 <a href="https://mstdn-workers.com/@rin_souma" target="_blank">@rin_souma@mstdn-workers.com</a></p>
     </div>

@@ -56,3 +56,6 @@ gem 'omniauth'
 
 #stylesheet_tagが動かないのです
 gem 'coffee-script-source', '1.8.0'
+
+#日本語化
+gem 'rails-i18n'

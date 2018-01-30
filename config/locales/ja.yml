@@ -1,0 +1,10 @@
+ja:
+  attributes:
+    title:    タイトル
+    detail:   詳細
+    place:    場所
+    url:    URL
+    date:   開催日時
+    limit:    参加上限
+    close_time: 回答期限
+    view:   公開範囲
