@@ -1,1 +1,6 @@
-<h2>詳細</h2>
+<% @events.each do |event| %>
+	<h2 class="detail_title"><%= event.title %></h2>
+	<% @members.each do |member| %>
+		<%= member.uid %>
+	<% end %>
+<% end %>

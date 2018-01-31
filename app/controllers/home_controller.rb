@@ -11,23 +11,16 @@ class HomeController < ApplicationController
   
   def show
     @events = Event.left_joins(:user).select("users.*, events.*").where(events: {id: params[:id]}).order("events.created_at desc")
-    p @events
+    @members = Member.left_joins(:user).select("users.*, members.*").where(members: {event_id: params[:id]}).order("members.kbn", "members.created_at")
     get_user_info
   end
   
   def create
-    get_user_info
-
-    @event = Event.new(event_params)
-    @event.uid = @user.uid
-      
-    p @event
-    
-    if @event.save
-      p @event
+    begin
+      get_user_info
+      insert_event
       redirect_to root_path
-    else
-      p @event.errors
+    rescue => e
       render action: :new
     end
   end
@@ -37,4 +30,19 @@ class HomeController < ApplicationController
     params[:event].permit(:title, :detail, :place, :url, :date, :limit, :close_time, :view)
   end
   
+  def insert_event
+    ActiveRecord::Base.transaction do
+      @event = Event.new(event_params)
+      @event.uid = @user.uid
+      @event.save!
+      @member = Member.new()
+      @member.uid = @user.uid
+      @member.event_id = @event.id
+      @member.kbn = 1
+      @member.save!
+    end
+    rescue => e
+      p e
+      throw e
+  end
 end
