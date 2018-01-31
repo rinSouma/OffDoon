@@ -1,10 +1,12 @@
-	<div>
-		<br>ｵﾌﾄﾞｩｰﾝ
-	</div>
-	<ul>
 	<% @events.each do |event| %>
-		<li class="event_list">
-		<%= event.title %>	
-		</li>	
+		<%= link_to(home_path(event), class:'event_link') do%>
+		<div class="event_list">
+			<div class="event_icon"><%= image_tag event.user.avatar, class: 'icon_img event_icon_img' %></div>
+			<div class="event_detail">
+				<div class="event_title"><%= event.title %></div>
+				<div class="event_date">開催日：<%= event.date.strftime("%Y/%m/%d %H:%M") %></div>
+				<div class="event_user">主催者：<%= event.user.display_name %></div>
+			</div>
+		</div>
+		<% end %>
 	<% end %>	
-	</ul>

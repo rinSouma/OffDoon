@@ -82,12 +82,12 @@ div.body{
 
 div.main_left{
 	float:left;
-	width:490px;
+	width:500px;
 	background-color: rgba(68,75,93,0.95);
 	min-height:600px;
 	padding-bottom : 32767px;
 	margin-bottom : -32767px;
-	padding-left : 10px;
+	
 }
 
 div.main_left > div{
@@ -198,4 +198,34 @@ div.footer p{
 
 .err_msg {
 	color:rgb(255,128,128);
+}
+
+.event_link {
+	text-decoration: none;
+}
+
+.event_list {
+	overflow: hidden;
+	padding: 10px;
+	border-bottom: solid 1px rgb(40,44,55);
+}
+
+.event_list:hover {
+	background-color:rgb(80,88,110);
+}
+.event_icon {
+	float: left;
+	padding: 10px 0px;
+}
+.event_detail {
+	margin-left:70px;
+}
+.event_title {
+	font-size:16px;
+	font-weight:700;
+}
+.event_icon_img {
+}
+.affi {
+	margin: 40px 10px;
 }

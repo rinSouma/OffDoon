@@ -24,7 +24,7 @@
 		<div class="main_right">
 			<% if @user %>
 				<div class="right_box">
-					<%= image_tag @user.avatar, :class => "icon_img" %> <%= @user.display_name %>さん
+					<%= image_tag @user.avatar, class: 'icon_img' %> <%= @user.display_name %>さん
 				</div>
 				<div class="right_box">
 					<%= link_to image_tag('new_event.png', class: 'link_button'), { :controller => :home, :action => :new }, class:'link_img' %>
@@ -33,8 +33,14 @@
 					<%= link_to image_tag('my_event.png', class: 'link_button'), root_path, class:'link_img' %>
 				</div>
 			<% else %>
-				<%= link_to "ログイン", '/auth/mastodon', class: 'btn btn-default' %>
+				<div class="right_box">
+					<%= link_to image_tag('login.png', class: 'link_button'), '/auth/mastodon', class:'link_img' %>
+				</div>
 			<% end %>
+			
+			<div class="affi">
+				ここにアフィを置きたいやつ
+			</div>
 		</div>
 
 	</div>

@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @events = Event.all.order(created_at: 'desc')
+    @events = Event.left_joins(:user).select("users.*, events.*").order("events.created_at desc")
     get_user_info
   end
   
@@ -10,7 +10,8 @@ class HomeController < ApplicationController
   end
   
   def show
-    redirect_to root_path
+    @events = Event.left_joins(:user).select("users.*, events.*").where(events: {id: params[:id]}).order("events.created_at desc")
+    p @events
     get_user_info
   end
   
