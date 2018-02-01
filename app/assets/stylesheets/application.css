@@ -29,6 +29,10 @@ h1{
 	margin: 10px;
 }
 
+h2{
+	margin:0px;
+}
+
 a:link {
 	color: rgb(217,225,232);
 }
@@ -228,13 +232,123 @@ div.footer p{
 }
 
 .detail_title {
+}
+
+.detail_header {
+	overflow: hidden;
 	padding:10px;
 }
 
+.detail_date {
+}
+.detail_user {
+	float:left;
+}
+.detail_list {
+	clear:both;
+}
 
+.detail_icon {
+	float: left;
+}
 
+.detail_info {
+	float:left;
+	padding-left:10px;
+}
 
+.table_row {
+	display:table;
+	width:480px;
+	margin-left:10px;
+	border-collapse: collapse;
+	table-layout: fixed;
+	margin-top:-2px;
+}
+.detail_column_left {
+	display:table-cell;
+	width:40px;
+	vertical-align:middle;
+	border-top:solid 2px rgb(80,88,110);
+	border-bottom:solid 2px rgb(80,88,110);
+	padding:10px;
+	background-color:rgb(80,88,110);
+	table-layout: fixed;
+}
+.detail_column_right {
+	display:table-cell;
+	width:400px;
+	border-top:solid 2px rgb(80,88,110);
+	border-bottom:solid 2px rgb(80,88,110);
+	padding:10px;
+}
 
+.row_title {
+	width:460px;
+	padding:10px;
+	margin:10px 10px 0px 10px;
+	background-color:rgb(80,88,110);
+	border-right:solid 2px rgb(80,88,110);
+}
+
+.member_list_title {
+	display:table;
+	width:480px;
+	margin-left:10px;
+	border-collapse: collapse;
+	table-layout: fixed;
+	margin-top:-2px;
+	border:solid 2px rgb(80,88,110);
+}
+
+.member_list_body {
+	display:table;
+	width:480px;
+	margin-left:10px;
+	border-collapse: collapse;
+	table-layout: fixed;
+	margin-top:-2px;
+	border:solid 2px rgb(80,88,110);
+}
+
+.member_list_join {
+	display:table-cell;
+	width:120px;
+	border-right:solid 2px rgb(80,88,110);
+	padding:10px;
+	table-layout: fixed;
+	font-size:12px;
+}
+
+.member_list_go_astray {
+	display:table-cell;
+	width:120px;
+	border-right:solid 2px rgb(80,88,110);
+	padding:10px;
+	table-layout: fixed;
+	font-size:12px;
+}
+
+.member_list_no_join {
+	display:table-cell;
+	width:120px;
+	border-right:solid 2px rgb(80,88,110);
+	padding:10px;
+	table-layout: fixed;
+	font-size:12px;
+}
+
+.member_list {
+	list-style-type: none;
+	padding:0px;
+}
+
+.icon_img_small {
+	width:20px;
+	height:20px;
+	border-radius: 10px;
+	vertical-align:middle;
+}
 
 .affi {
 	margin: 40px 10px;

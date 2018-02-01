@@ -12,6 +12,21 @@ class HomeController < ApplicationController
   def show
     @events = Event.left_joins(:user).select("users.*, events.*").where(events: {id: params[:id]}).order("events.created_at desc")
     @members = Member.left_joins(:user).select("users.*, members.*").where(members: {event_id: params[:id]}).order("members.kbn", "members.created_at")
+    @comments = Comment.left_joins(:user).select("users.*, comments.*").where(comments: {event_id: params[:id]}).order("comments.created_at")
+      
+    @join = {}
+    @go_astray = {}
+    @no_join = {}
+      
+    @members.each do |member|
+      if member.kbn == Member.statuses['join'] then
+        @join[member.id] = member
+      elsif member.kbn == Member.statuses['go_astray'] then
+        @go_astray[member.id] = member
+      elsif member.kbn == Member.statuses['no_join'] then
+        @no_join[member.id] = member
+      end
+    end
     get_user_info
   end
   
@@ -38,7 +53,7 @@ class HomeController < ApplicationController
       @member = Member.new()
       @member.uid = @user.uid
       @member.event_id = @event.id
-      @member.kbn = 1
+      @member.kbn = Member.status.join
       @member.save!
     end
     rescue => e
