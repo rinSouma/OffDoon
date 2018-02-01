@@ -30,7 +30,6 @@ h1{
 }
 
 h2{
-	margin:0px;
 }
 
 a:link {
@@ -118,6 +117,10 @@ div.footer{
 div.footer p{
 	font-size:12px;
 	text-align: center;
+}
+
+div.content_body {
+	padding:10px;
 }
 
 .icon_img {
@@ -232,6 +235,8 @@ div.footer p{
 }
 
 .detail_title {
+	font-size:24px;
+	font-weight: 700;
 }
 
 .detail_header {

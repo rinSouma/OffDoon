@@ -53,7 +53,7 @@ class HomeController < ApplicationController
       @member = Member.new()
       @member.uid = @user.uid
       @member.event_id = @event.id
-      @member.kbn = Member.status.join
+      @member.kbn = Member.statuses['join']
       @member.save!
     end
     rescue => e

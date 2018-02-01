@@ -1,6 +1,6 @@
 <% @events.each do |event| %>
 	<div class="detail_header">
-		<h2 class="detail_title"><%= event.title %></h2>
+		<div class="detail_title"><%= event.title %></div>
 		<div class="detail_icon"><%= image_tag event.user.avatar, class: 'icon_img event_icon_img' %></div>
 		<div class="detail_info">
 			<div class="detail_date">開催日：<%= event.date.strftime("%Y/%m/%d %H:%M") %></div>
