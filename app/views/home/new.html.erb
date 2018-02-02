@@ -12,11 +12,11 @@
 	<br>
 	回答期限：<%== sprintf(f.datetime_select(:close_time, {use_month_numbers: true, start_year: Date.today.year, end_year: Date.today.year + 10, date_separator: '%s', datetime_separator: '%s', time_separator: '%s'}, {class: 'date_time'}), '年', '月', '日', '時') + '分' %>
 	<br>
-	<label class='input_radio'><%= f.radio_button :view, 0, :checked => true %><p class = 'radio_text'>全体公開</p></label>
+	<label class='input_radio'><%= f.radio_button :view, 0, :checked => true %><p class = 'radio_text'><%= $NAME_VIEW[0] %></p></label>
 	<br>
-	<label class='input_radio'><%= f.radio_button :view, 1 %><p class = 'radio_text'>ログインユーザにのみ公開</p></label>
+	<label class='input_radio'><%= f.radio_button :view, 1 %><p class = 'radio_text'><%= $NAME_VIEW[1] %></p></label>
 	<br>
-	<label class='input_radio'><%= f.radio_button :view, 2 %><p class = 'radio_text'>同インスタンスのユーザにのみ公開</p></label>
+	<label class='input_radio'><%= f.radio_button :view, 2 %><p class = 'radio_text'><%= $NAME_VIEW[2] %></p></label>
 	<br>
 	<%= f.submit 'イベントを登録', class: 'submit_button' %>
 	<% end %>

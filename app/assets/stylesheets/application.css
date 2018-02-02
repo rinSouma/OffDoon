@@ -150,13 +150,13 @@ div.content_body {
 }
 
 .input_text {
-	width:450px;
+	width:470px;
 	padding:1px;
 	margin-bottom:20px;
 }
 
 .input_text_area {
-	width:450px;
+	width:470px;
 	height:10em;
 	padding:1px;
 	margin-bottom:20px;
@@ -346,6 +346,11 @@ div.content_body {
 .member_list {
 	list-style-type: none;
 	padding:0px;
+	margin:0px;
+}
+
+.member_list_items {
+	padding-top:6px;
 }
 
 .icon_img_small {
@@ -399,6 +404,62 @@ div.content_body {
 	font-size:10px;
 }
 
+.join_form {
+	display:table;
+	width:480px;
+	margin-left:10px;
+	border-collapse: collapse;
+	table-layout: fixed;
+	margin-top:-2px;
+	border:solid 2px rgb(80,88,110);
+}
+
+.join_area {
+	display:table-cell;
+	width:130px;
+	border-right:solid 2px rgb(80,88,110);
+	padding:10px;
+	table-layout: fixed;
+	font-size:12px;
+	vertical-align:middle;
+	text-align:center;
+}
+
+.join_button {
+	width:120px;
+	height:50px;
+	text-decoration: none;
+	padding:10px 6px 6px 6px;
+	margin: auto;
+	border-radius: 10px;
+	font-size:18px;
+	font-weight: 500;
+}
+
+.join {
+	background-color:rgb(37,136,208);
+}
+
+.go_astray {
+	background-color:rgb(200,130,30);
+}
+
+.no_join {
+	background-color:rgb(200, 30,100);
+}
+
+.go_astray:hover {
+	background-color:rgb(217, 160, 81);
+	cursor : pointer;
+}
+.no_join:hover {
+	background-color:rgb(217,81,160);
+	cursor : pointer;
+}
+
+.link{
+	text-decoration: none;
+}
 .affi {
 	margin: 40px 10px;
 }

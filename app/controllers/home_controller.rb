@@ -13,6 +13,7 @@ class HomeController < ApplicationController
     get_user_info
     @event = Event.left_joins(:user).find(params[:id])
     @members = @event.members.includes(:user).all.order("members.kbn", "members.created_at")
+    @member  = @event.members.build(uid: @user.id) if @user 
     @comments = @event.comments.includes(:user).all.order("comments.created_at")
     @comment = @event.comments.build(uid: @user.id) if @user 
     @join = {}

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :home
   resources :login, only: [:create]
   resources :comment, only: [:create, :destroy]
+  resources :member, only: [:create, :destroy]
   
   root 'home#index'
   

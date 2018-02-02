@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+
+  #共通定数
+  $NAME_VIEW = {0 => "全体公開", 1 => "ログインユーザにのみ公開", 2 => "同インスタンスのユーザにのみ公開"}
+  $NAME_JOIN = {1 => "参加希望", 2 => "検討中", 3 => "不参加"}  
   
   def get_user_info
     #トークンを使ってユーザ情報を取得（できていればログイン済み）
@@ -24,5 +28,4 @@ class ApplicationController < ActionController::Base
       end
     end
   end
-  
 end

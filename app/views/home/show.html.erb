@@ -19,31 +19,80 @@
 		<div class="detail_column_left">URL</div>
 		<div class="detail_column_right"><%= link_to @event.url, @event.url, target: "_blank" %></div>
 	</div>
+	<div class="table_row">
+		<div class="detail_column_left">公開</div>
+		<div class="detail_column_right"><%= $NAME_VIEW[@event.view] %></div>
+	</div>
 
 	<div class="row_title">参加状況</div>
 	<div class="member_list_title">
-		<div class="member_list_join">参加希望　(<%= @join.length %>人 / <%= @event.limit %> 人)</div>
-		<div class="member_list_go_astray">検討中　(<%= @go_astray.length %>人)</div>
-		<div class="member_list_no_join">不参加　(<%= @no_join.length %>人)</div>
+		<div class="member_list_join"><%= $NAME_JOIN[1] %>　(<%= @join.length %>人 / <%= @event.limit %> 人)</div>
+		<div class="member_list_go_astray"><%= $NAME_JOIN[2] %>　(<%= @go_astray.length %>人)</div>
+		<div class="member_list_no_join"><%= $NAME_JOIN[3] %>　(<%= @no_join.length %>人)</div>
 	</div>
 	<div class="member_list_body">
 		<div class="member_list_join">
-			<% @join.each do |key, member| %>
-				<%= image_tag @event.user.avatar, class: 'icon_img_small' %>
-				<%= link_to member.user.display_name, member.user.url, target: "_blank" %>
-			<% end %>
+			<ul class="member_list">
+				<% @join.each do |key, member| %>
+					<li class="member_list_items">
+						<%= image_tag member.user.avatar, class: 'icon_img_small' %>
+						<%= link_to member.user.display_name, member.user.url, target: "_blank" %>
+					</li>
+				<% end %>
+			</ul>
 		</div>
 		<div class="member_list_go_astray">
-			<% @go_astray.each do |key, member| %>
-				<%= link_to member.user.display_name, member.user.url, target: "_blank" %>
-			<% end %>
+			<ul class="member_list">
+				<% @go_astray.each do |key, member| %>
+					<li class="member_list_items">
+						<%= image_tag member.user.avatar, class: 'icon_img_small' %>
+						<%= link_to member.user.display_name, member.user.url, target: "_blank" %>
+					</li>
+				<% end %>
+			</ul>
 		</div>
 		<div class="member_list_no_join">
-			<% @no_join.each do |key, member| %>
-				<%= link_to member.user.display_name, member.user.url, target: "_blank" %>
-			<% end %>
+			<ul class="member_list">
+				<% @no_join.each do |key, member| %>
+					<li class="member_list_items">
+						<%= image_tag member.user.avatar, class: 'icon_img_small' %>
+						<%= link_to member.user.display_name, member.user.url, target: "_blank" %>
+					</li>
+				<% end %>
+			</ul>
 		</div>
 	</div>
+
+	<% if @member %>
+		<div class="row_title">参加表明</div>
+		<div class="join_form">
+			<div class="join_area">
+				<%= form_for @member, url: member_index_path do |f| %>
+					<%= f.hidden_field :kbn, value: 1 %>
+					<%= f.hidden_field :event_id, value: @comment.event_id %>
+					<%= f.hidden_field :uid, value: @comment.uid %>
+					<%= f.submit $NAME_JOIN[1], class: 'submit_button join_button join' %>
+				<% end %>
+			</div>
+			<div class="join_area">
+				<%= form_for @member, url: member_index_path do |f| %>
+					<%= f.hidden_field :kbn, value: 2 %>
+					<%= f.hidden_field :event_id, value: @comment.event_id %>
+					<%= f.hidden_field :uid, value: @comment.uid %>
+					<%= f.submit $NAME_JOIN[2], class: 'submit_button join_button go_astray' %>
+				<% end %>
+			</div>
+			<div class="join_area">
+				<%= form_for @member, url: member_index_path do |f| %>
+					<%= f.hidden_field :kbn, value: 3 %>
+					<%= f.hidden_field :event_id, value: @comment.event_id %>
+					<%= f.hidden_field :uid, value: @comment.uid %>
+					<%= f.submit $NAME_JOIN[3], class: 'submit_button join_button no_join' %>
+				<% end %>
+			</div>
+		</div>
+	<% else %>
+	<% end %>	
 
 	<div class="row_title">コメント</div>
 	<% @comments.each do |comment| %>
