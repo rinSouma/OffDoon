@@ -97,13 +97,13 @@
 	<div class="row_title">コメント</div>
 	<% @comments.each do |comment| %>
 		<div class="comment_list_body">
-			<div class="comment_icon"><%= image_tag @event.user.avatar, class: 'icon_img_small' %></div>
+			<div class="comment_icon"><%= image_tag comment.user.avatar, class: 'icon_img_small' %></div>
 			<div class="comment_body">
 				<div class="comment"><%= comment.comment %></div>
 				<div class="comment_user">
 					<%= link_to comment.user.display_name, comment.user.url, target: "_blank" %>
-					<% if @comment && @comment.uid == @user.uid %>
-					<%= link_to 'コメントを削除する', comment_path(comment), method: :delete,  class: "delete_link" %>
+					<% if @comment && comment.uid == @user.uid %>
+						<%= link_to 'コメントを削除する', comment_path(comment), method: :delete,  class: "delete_link" %>
 					<% end %>
 				</div>
 			</div>
