@@ -10,10 +10,11 @@ class HomeController < ApplicationController
   end
   
   def show
-    @events = Event.left_joins(:user).select("users.*, events.*").where(events: {id: params[:id]}).order("events.created_at desc")
-    @members = Member.left_joins(:user).select("users.*, members.*").where(members: {event_id: params[:id]}).order("members.kbn", "members.created_at")
-    @comments = Comment.left_joins(:user).select("users.*, comments.*").where(comments: {event_id: params[:id]}).order("comments.created_at")
-      
+    get_user_info
+    @event = Event.left_joins(:user).find(params[:id])
+    @members = @event.members.includes(:user).all.order("members.kbn", "members.created_at")
+    @comments = @event.comments.includes(:user).all.order("comments.created_at")
+    @comment = @event.comments.build(uid: @user.id) if @user 
     @join = {}
     @go_astray = {}
     @no_join = {}
@@ -27,7 +28,6 @@ class HomeController < ApplicationController
         @no_join[member.id] = member
       end
     end
-    get_user_info
   end
   
   def create

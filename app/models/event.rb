@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
-  has_many :comments
-  has_many :members
+  has_many :comments, dependent: :destroy
+  has_many :members, dependent: :destroy
   belongs_to :user, class_name: "User", foreign_key: "uid", optional: true
   validates :title, presence: true, length: { maximum: 30 }
   validates :detail, presence: true

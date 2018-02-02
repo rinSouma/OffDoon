@@ -1,36 +1,35 @@
-<% @events.each do |event| %>
 	<div class="detail_header">
-		<div class="detail_title"><%= event.title %></div>
-		<div class="detail_icon"><%= image_tag event.user.avatar, class: 'icon_img event_icon_img' %></div>
+		<div class="detail_title"><%= @event.title %></div>
+		<div class="detail_icon"><%= image_tag @event.user.avatar, class: 'icon_img event_icon_img' %></div>
 		<div class="detail_info">
-			<div class="detail_date">開催日：<%= event.date.strftime("%Y/%m/%d %H:%M") %></div>
-			<div class="detail_user">主催者：<%= link_to event.user.display_name, event.user.url, target: "_blank" %></div>
+			<div class="detail_date">開催日：<%= @event.date.strftime("%Y/%m/%d %H:%M") %></div>
+			<div class="detail_user">主催者：<%= link_to @event.user.display_name, @event.user.url, target: "_blank" %></div>
 		</div>
 	</div>
 	
 	<div class="table_row">
 		<div class="detail_column_left">内容</div>
-		<div class="detail_column_right"><%= simple_format(h(event.detail)) %></div>
+		<div class="detail_column_right"><%= simple_format(h(@event.detail)) %></div>
 	</div>
 	<div class="table_row">
 		<div class="detail_column_left">場所</div>
-		<div class="detail_column_right"><%= event.place %></div>
+		<div class="detail_column_right"><%= @event.place %></div>
 	</div>
 	<div class="table_row">
 		<div class="detail_column_left">URL</div>
-		<div class="detail_column_right"><%= link_to event.url, event.url, target: "_blank" %></div>
+		<div class="detail_column_right"><%= link_to @event.url, @event.url, target: "_blank" %></div>
 	</div>
 
 	<div class="row_title">参加状況</div>
 	<div class="member_list_title">
-		<div class="member_list_join">参加希望　(<%= @join.length %>人 / <%= event.limit %> 人)</div>
+		<div class="member_list_join">参加希望　(<%= @join.length %>人 / <%= @event.limit %> 人)</div>
 		<div class="member_list_go_astray">検討中　(<%= @go_astray.length %>人)</div>
 		<div class="member_list_no_join">不参加　(<%= @no_join.length %>人)</div>
 	</div>
 	<div class="member_list_body">
 		<div class="member_list_join">
 			<% @join.each do |key, member| %>
-				<%= image_tag event.user.avatar, class: 'icon_img_small' %>
+				<%= image_tag @event.user.avatar, class: 'icon_img_small' %>
 				<%= link_to member.user.display_name, member.user.url, target: "_blank" %>
 			<% end %>
 		</div>
@@ -48,7 +47,28 @@
 
 	<div class="row_title">コメント</div>
 	<% @comments.each do |comment| %>
-		<div class="detail_list"><%= comment.user.display_name %></div>
-		<div class="detail_list"><%= comment.comment %></div>
+		<div class="comment_list_body">
+			<div class="comment_icon"><%= image_tag @event.user.avatar, class: 'icon_img_small' %></div>
+			<div class="comment_body">
+				<div class="comment"><%= comment.comment %></div>
+				<div class="comment_user">
+					<%= link_to comment.user.display_name, comment.user.url, target: "_blank" %>
+					<% if @comment && @comment.uid == @user.uid %>
+					<%= link_to 'コメントを削除する', comment_path(comment), method: :delete,  class: "delete_link" %>
+					<% end %>
+				</div>
+			</div>
+		</div>
 	<% end %>
-<% end %>
+	
+	<div class="comment_form">
+		<% if @comment%>
+			<%= form_for @comment, url: comment_index_path do |f| %>
+				<%= f.text_field :comment, placeholder: 'コメント', class:'input_text' %>
+				<%= f.hidden_field :event_id, value: @comment.event_id %>
+				<%= f.hidden_field :uid, value: @comment.uid %>
+				<%= f.submit 'コメントを登録', class: 'submit_button submit_comment' %>
+			<% end %>
+		<% else %>
+		<% end %>	
+	</div>
