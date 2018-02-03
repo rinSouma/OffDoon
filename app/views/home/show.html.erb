@@ -24,6 +24,12 @@
 		<div class="detail_column_right"><%= $NAME_VIEW[@event.view] %></div>
 	</div>
 
+	<div class="table_row">
+		<div class="detail_column_left">期限</div>
+		<div class="detail_column_right"><%= @event.close_time.strftime("%Y/%m/%d %H:%M") %></div>
+	</div>
+
+
 	<div class="row_title">参加状況</div>
 	<div class="member_list_title">
 		<div class="member_list_join"><%= $NAME_JOIN[1] %>　(<%= @join.length %>人 / <%= @event.limit %> 人)</div>
@@ -103,7 +109,7 @@
 				<div class="comment_user">
 					<%= link_to comment.user.display_name, comment.user.url, target: "_blank" %>
 					<% if @comment && comment.uid == @user.uid %>
-						<%= link_to 'コメントを削除する', comment_path(comment), method: :delete,  class: "delete_link" %>
+						<%= link_to 'コメントを削除する', comment_path(comment), method: :delete,  class: "delete_link", data: {confirm: 'コメントを削除します'} %>
 					<% end %>
 				</div>
 			</div>
@@ -121,3 +127,10 @@
 		<% else %>
 		<% end %>	
 	</div>
+	
+	<% if @event.uid == @user.uid %>
+		<div class="edit_area">
+			<%= link_to "イベント編集", edit_home_path, class: 'submit_button edit_button' %>
+			<%= link_to "イベント削除", home_path, method: :delete, class: 'submit_button edit_button', data: {confirm: 'イベントを削除します'} %>
+		</div>
+	<% end %>

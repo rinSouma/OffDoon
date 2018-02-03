@@ -41,6 +41,24 @@ class HomeController < ApplicationController
     end
   end
   
+  def edit
+    get_user_info
+    @event = Event.find(params[:id])
+  end
+  
+  def update
+    @event = Event.find(params[:id])
+    if @event.update_attributes(event_params)
+      redirect_to home_path(@event.id)
+    else
+      render action: :edit
+    end
+  end
+  
+  def destroy
+    redirect_to root_path
+  end
+  
   private
   def event_params
     params[:event].permit(:title, :detail, :place, :url, :date, :limit, :close_time, :view)

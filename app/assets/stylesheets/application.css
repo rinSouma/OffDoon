@@ -460,6 +460,19 @@ div.content_body {
 .link{
 	text-decoration: none;
 }
+
+.edit_area {
+	margin:20px 10px;
+}
+.edit_button {
+	margin-top:0px;
+	margin-right:10px;
+	height:24px;
+	display:inline-block;
+	text-decoration: none;
+	text-align:center;
+	padding-top:6px;
+}
 .affi {
 	margin: 40px 10px;
 }
