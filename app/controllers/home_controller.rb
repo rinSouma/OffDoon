@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
-    @events = Event.left_joins(:user).select("users.*, events.*").order("events.created_at desc")
     get_user_info
+    @events = Event.search(@user).left_joins(:user).order("events.created_at desc")
   end
   
   def new
@@ -11,7 +11,7 @@ class HomeController < ApplicationController
   
   def show
     get_user_info
-    @event = Event.left_joins(:user).find(params[:id])
+    @event = Event.search(@user).left_joins(:user).find(params[:id])
     @members = @event.members.includes(:user).all.order("members.kbn", "members.created_at")
     @member  = @event.members.build(uid: @user.id) if @user 
     @comments = @event.comments.includes(:user).all.order("comments.created_at")

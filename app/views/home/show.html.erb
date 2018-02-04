@@ -128,7 +128,7 @@
 		<% end %>	
 	</div>
 	
-	<% if @event.uid == @user.uid %>
+	<% if @user && @event.uid == @user.uid %>
 		<div class="edit_area">
 			<%= link_to "イベント編集", edit_home_path, class: 'submit_button edit_button' %>
 			<%= link_to "イベント削除", home_path, method: :delete, class: 'submit_button edit_button', data: {confirm: 'イベントを削除します'} %>
