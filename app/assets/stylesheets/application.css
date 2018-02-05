@@ -473,6 +473,50 @@ div.content_body {
 	text-align:center;
 	padding-top:6px;
 }
+
+.my_event_list {
+	margin:0px 8px 0px 10px;
+	
+}
+
+.pagination {
+	margin:10px;
+	padding:0px;
+	display:table;
+	table-layout:fixed;
+	border:solid 2px rgb(80,88,110);
+	border-radius: 10px;
+}
+
+.pagination li {
+	display:table-cell;
+	table-layout:fixed;
+	padding:5px;
+}
+
+.pagination li:nth-child(even){
+	background-color: rgb(80,88,110);
+}
+
+.pagination li.page {
+	padding: 5px 10px;
+}
+
+.pagination li.active {
+	font-weight:700;
+	color:rgb(37,136,208);
+}
+
+.pagination li a {
+	text-decoration: none;
+}
+
+.pagination li.active a {
+	font-weight:700;
+	color:rgb(37,136,208);
+}
+
+
 .affi {
 	margin: 40px 10px;
 }

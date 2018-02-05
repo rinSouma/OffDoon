@@ -1,7 +1,8 @@
 class HomeController < ApplicationController
+  PER = 5
   def index
     get_user_info
-    @events = Event.search(@user).left_joins(:user).order("events.created_at desc")
+    @events = Event.search(@user).page(params[:page]).per(PER).left_joins(:user).order("events.created_at desc")
   end
   
   def new
@@ -13,9 +14,9 @@ class HomeController < ApplicationController
     get_user_info
     @event = Event.search(@user).left_joins(:user).find(params[:id])
     @members = @event.members.includes(:user).all.order("members.kbn", "members.created_at")
-    @member  = @event.members.build(uid: @user.id) if @user 
+    @member  = @event.members.build(uid: @user.uid) if @user 
     @comments = @event.comments.includes(:user).all.order("comments.created_at")
-    @comment = @event.comments.build(uid: @user.id) if @user 
+    @comment = @event.comments.build(uid: @user.uid) if @user 
     @join = {}
     @go_astray = {}
     @no_join = {}

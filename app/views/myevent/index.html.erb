@@ -1,0 +1,41 @@
+	<div class="row_title">参加するイベント</div>
+	<% @join.each do |key, event| %>
+		<%= link_to(home_path(event), class:'event_link') do%>
+		<div class="event_list my_event_list">
+			<div class="event_icon"><%= image_tag @user_info[key].avatar, class: 'icon_img event_icon_img' %></div>
+			<div class="event_detail">
+				<div class="event_title"><%= event.title %></div>
+				<div class="event_date">開催日：<%= event.date.strftime("%Y/%m/%d %H:%M") %></div>
+				<div class="event_user">主催者：<%=  @user_info[key].display_name %></div>
+			</div>
+		</div>
+		<% end %>
+	<% end %>	
+				
+	<div class="row_title">検討中のイベント</div>
+	<% @go_astray.each do |key, event| %>
+		<%= link_to(home_path(event), class:'event_link') do%>
+		<div class="event_list my_event_list">
+			<div class="event_icon"><%= image_tag @user_info[key].avatar, class: 'icon_img event_icon_img' %></div>
+			<div class="event_detail">
+				<div class="event_title"><%= event.title %></div>
+				<div class="event_date">開催日：<%= event.date.strftime("%Y/%m/%d %H:%M") %></div>
+				<div class="event_user">主催者：<%=  @user_info[key].display_name %></div>
+			</div>
+		</div>
+		<% end %>
+	<% end %>	
+
+	<div class="row_title">不参加のイベント</div>
+	<% @no_join.each do |key, event| %>
+		<%= link_to(home_path(event), class:'event_link') do%>
+		<div class="event_list my_event_list">
+			<div class="event_icon"><%= image_tag @user_info[key].avatar, class: 'icon_img event_icon_img' %></div>
+			<div class="event_detail">
+				<div class="event_title"><%= event.title %></div>
+				<div class="event_date">開催日：<%= event.date.strftime("%Y/%m/%d %H:%M") %></div>
+				<div class="event_user">主催者：<%=  @user_info[key].display_name %></div>
+			</div>
+		</div>
+		<% end %>
+	<% end %>	

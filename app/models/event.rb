@@ -12,9 +12,9 @@ class Event < ApplicationRecord
     #ユーザ情報がある（ログインしている場合）はドメインチェック
     #そうでなければ全体公開のもののみ取得
     if user
-      where(["events.view = ? or events.view = ? or (events.view = ? and events.uid like ?)", 0, 1, 2, "%@"+user.domain])
+      where(["events.view = ? or events.view = ? or (events.view = ? and events.uid like ?) and events.date >= ?", 0, 1, 2, "%@"+user.domain, DateTime.now.to_s(:db)])
     else
-      where(['events.view = ?', 0])
+      where(['events.view = ? and events.date >= ?', 0, DateTime.now.to_s(:db)])
     end
   end
   

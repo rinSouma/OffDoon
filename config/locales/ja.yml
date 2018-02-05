@@ -8,3 +8,11 @@ ja:
     limit:    参加上限
     close_time: 回答期限
     view:   公開範囲
+    
+  views:
+    pagination:
+      first: "<<"
+      last: ">>"
+      previous: "<"
+      next: ">"
+      truncate: "..."

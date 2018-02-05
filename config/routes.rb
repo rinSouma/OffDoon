@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   resources :login, only: [:create]
   resources :comment, only: [:create, :destroy]
   resources :member, only: [:create, :destroy]
-  
+  resources :myevent, only: [:index]
+    
   root 'home#index'
   
   # Mastodon認証後

@@ -59,3 +59,8 @@ gem 'coffee-script-source', '1.8.0'
 
 #日本語化
 gem 'rails-i18n'
+
+#改ページ機能を持たせたい
+gem 'kaminari', '~> 0.17.0'
+gem 'kaminari-bootstrap', '~> 3.0.1'
+
