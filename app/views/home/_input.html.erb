@@ -19,6 +19,8 @@
 	<label class='input_radio'><%= f.radio_button :view, 2 %><p class = 'radio_text'><%= $NAME_VIEW[2] %></p></label>
 	<br>
 	<%= f.submit title, class: 'submit_button' %>
+	<%= check_box_tag 'toot', true, true, {} %>
+	<%= label_tag 'toot', "トゥートする" %>
 	<% end %>
 
 	<% if @event %>

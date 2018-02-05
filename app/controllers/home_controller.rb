@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   PER = 5
   def index
     get_user_info
-    @events = Event.search(@user).page(params[:page]).per(PER).left_joins(:user).order("events.created_at desc")
+    @events = Event.search(@user, true).page(params[:page]).per(PER).left_joins(:user).order("events.created_at desc")
   end
   
   def new
@@ -12,7 +12,7 @@ class HomeController < ApplicationController
   
   def show
     get_user_info
-    @event = Event.search(@user).left_joins(:user).find(params[:id])
+    @event = Event.search(@user, false).left_joins(:user).find(params[:id])
     @members = @event.members.includes(:user).all.order("members.kbn", "members.created_at")
     @member  = @event.members.build(uid: @user.uid) if @user 
     @comments = @event.comments.includes(:user).all.order("comments.created_at")
@@ -36,6 +36,12 @@ class HomeController < ApplicationController
     begin
       get_user_info
       insert_event
+      #トゥートするかしないかチェックボックス判定
+      if params['toot']
+        url = request.url
+        message = "OffDoonでイベントを作成しました。\n「#{@event.title}」\n#{url}/#{@event.id}"
+        toot_for_mastodon(message)
+      end
       redirect_to root_path
     rescue => e
       render action: :new
@@ -48,8 +54,14 @@ class HomeController < ApplicationController
   end
   
   def update
+    get_user_info
     @event = Event.find(params[:id])
     if @event.update_attributes(event_params)
+      if params['toot']
+        url = request.url
+        message = "OffDoonのイベントを編集しました。\n「#{@event.title}」\n#{url}"
+        toot_for_mastodon(message)
+      end
       redirect_to home_path(@event.id)
     else
       render action: :edit

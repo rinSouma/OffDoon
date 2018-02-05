@@ -27,5 +27,10 @@ class ApplicationController < ActionController::Base
           p e
       end
     end
+    
+    def toot_for_mastodon(message)
+      client = Mastodon::REST::Client.new(base_url: "https://#{@user.domain}", bearer_token: session[:token])
+      client.create_status(message)
+    end
   end
 end

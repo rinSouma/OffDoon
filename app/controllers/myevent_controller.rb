@@ -2,7 +2,7 @@ class MyeventController < ApplicationController
   def index
     get_user_info
     
-    @events = Event.search(@user).includes(:members).where(members: {uid: @user.uid} ).left_joins(:user).order("events.date asc")
+    @events = Event.search(@user, true).includes(:members).where(members: {uid: @user.uid} ).left_joins(:user).order("events.date asc")
     
     @join = {}
     @go_astray = {}
