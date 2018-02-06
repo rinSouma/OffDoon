@@ -13,13 +13,13 @@ class Event < ApplicationRecord
     #そうでなければ全体公開のもののみ取得
     if user
       if date_flg
-        where(["(events.view = ? or events.view = ? or (events.view = ? and events.uid like ?)) and events.date >= ?", 0, 1, 2, "%@"+user.domain, DateTime.now.to_s(:db)])
+        where(["(events.view = ? or events.view = ? or (events.view = ? and events.uid like ?)) and events.date >= ?", 0, 1, 2, "%@"+user.domain, DateTime.now.yesterday.to_s(:db)])
       else
         where(["events.view = ? or events.view = ? or (events.view = ? and events.uid like ?)", 0, 1, 2, "%@"+user.domain])
       end
     else
       if date_flg
-        where(['events.view = ? and events.date >= ?', 0, DateTime.now.to_s(:db)])
+        where(['events.view = ? and events.date >= ?', 0, DateTime.now.yesterday.to_s(:db)])
       else
         where(['events.view = ?', 0])
       end
