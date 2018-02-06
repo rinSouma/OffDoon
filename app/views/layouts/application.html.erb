@@ -36,7 +36,8 @@
 				</div>
 			<% else %>
 				<div class="right_box">
-					<%= link_to image_tag('login.png', class: 'link_button'), '/auth/mastodon', class:'link_img' %>
+					<% my_path = request.url%>
+					<%= link_to image_tag('login.png', class: 'link_button'), "#{my_path}auth/mastodon", class:'link_img' %>
 				</div>
 			<% end %>
 			
