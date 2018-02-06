@@ -12,23 +12,27 @@ class HomeController < ApplicationController
   
   def show
     get_user_info
-    @event = Event.search(@user, false).left_joins(:user).find(params[:id])
-    @members = @event.members.includes(:user).all.order("members.kbn", "members.created_at")
-    @member  = @event.members.build(uid: @user.uid) if @user 
-    @comments = @event.comments.includes(:user).all.order("comments.created_at")
-    @comment = @event.comments.build(uid: @user.uid) if @user 
-    @join = {}
-    @go_astray = {}
-    @no_join = {}
+    begin
+      @event = Event.search(@user, false).left_joins(:user).find(params[:id])
+      @members = @event.members.includes(:user).all.order("members.kbn", "members.created_at")
+      @member  = @event.members.build(uid: @user.uid) if @user 
+      @comments = @event.comments.includes(:user).all.order("comments.created_at")
+      @comment = @event.comments.build(uid: @user.uid) if @user 
+      @join = {}
+      @go_astray = {}
+      @no_join = {}
       
-    @members.each do |member|
-      if member.kbn == Member.statuses['join'] then
-        @join[member.id] = member
-      elsif member.kbn == Member.statuses['go_astray'] then
-        @go_astray[member.id] = member
-      elsif member.kbn == Member.statuses['no_join'] then
-        @no_join[member.id] = member
+      @members.each do |member|
+        if member.kbn == Member.statuses['join'] then
+          @join[member.id] = member
+        elsif member.kbn == Member.statuses['go_astray'] then
+          @go_astray[member.id] = member
+        elsif member.kbn == Member.statuses['no_join'] then
+          @no_join[member.id] = member
+        end
       end
+    rescue=>e
+      redirect_to root_path
     end
   end
   
