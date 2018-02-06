@@ -64,3 +64,7 @@ gem 'rails-i18n'
 gem 'kaminari', '~> 0.17.0'
 gem 'kaminari-bootstrap', '~> 3.0.1'
 
+#unicornは必要
+platforms :ruby do
+  gem 'unicorn'
+end
