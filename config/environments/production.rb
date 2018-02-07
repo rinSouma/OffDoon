@@ -93,4 +93,8 @@ Rails.application.configure do
   Rails.application.configure do
    config.force_ssl = true
   end
+  
+  #Googleアナリティクス
+  GA.tracker = ENV["GOOGLE_ANALYTICS"]
+  
 end

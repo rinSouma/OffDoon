@@ -68,3 +68,7 @@ gem 'kaminari-bootstrap', '~> 3.0.1'
 platforms :ruby do
   gem 'unicorn'
 end
+
+#Googleアナリティクスのトラッキング
+gem 'google-analytics-rails'
+
