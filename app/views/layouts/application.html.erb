@@ -14,7 +14,7 @@
 	<%= link_to root_path do%>
   	<div class="header">
   	<h1><%= image_tag 'doon_logo2.png', class: 'logo' %>
-  		<p class="logo_title">マストドン用オフ会調整システム（α）<br><span class="version_info">V0.0.1</span></p>
+  		<p class="logo_title">マストドン用オフ会調整システム（α）<br><span class="version_info">V0.0.2</span></p>
   	</h1>
   	</div>
   	<%end%>
@@ -28,6 +28,9 @@
 			<% if @user %>
 				<div class="right_box">
 					<%= image_tag @user.avatar, class: 'icon_img' %> <%= @user.display_name %>さん
+				</div>
+				<div class="right_box">
+					<%= link_to "ログアウト", logout_index_path, class:'logout' %>
 				</div>
 				<div class="right_box">
 					<%= link_to image_tag('new_event.png', class: 'link_button'), { :controller => :home, :action => :new }, class:'link_img' %>

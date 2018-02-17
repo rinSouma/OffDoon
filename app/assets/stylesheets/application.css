@@ -160,6 +160,9 @@ div.content_body {
   -ms-filter: "alpha(opacity=80)";
 }
 
+.logout{
+}
+
 .input_text {
 	width:470px;
 	padding:1px;

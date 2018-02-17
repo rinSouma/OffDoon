@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :comment, only: [:create, :destroy]
   resources :member, only: [:create, :destroy]
   resources :myevent, only: [:index]
-    
+  resources :logout, only: [:index]
+
   root 'home#index'
   
   # Mastodon認証後
