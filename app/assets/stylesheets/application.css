@@ -45,6 +45,9 @@ a:active {
 	color: rgb(217,225,232);
 }
 
+div {
+	word-break: break-all;
+}
 
 .logo {
 	width:300px;
