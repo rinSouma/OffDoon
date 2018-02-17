@@ -37,7 +37,7 @@
 				</div>
 			<% else %>
 				<div class="right_box">
-					<% my_path = request.domain %>
+					<% my_path = request.host_with_port %>
 					<%= link_to image_tag('login.png', class: 'link_button'), "https://#{my_path}/OffDoon/auth/mastodon", class:'link_img' %>
 				</div>
 			<% end %>

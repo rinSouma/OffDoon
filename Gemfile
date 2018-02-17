@@ -72,3 +72,11 @@ end
 #Googleアナリティクスのトラッキング
 gem 'google-analytics-rails'
 
+#開発環境でhttpsしたい
+gem 'thin'
+
+
+
+
+
+
