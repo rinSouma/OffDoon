@@ -7,7 +7,7 @@ https://smrin.net/OffDoon/
 
 #### 必須機能
 
-・回答期限機能
+・API
 
 #### もしかしたら作るかも機能
 
