@@ -68,37 +68,40 @@
 			</ul>
 		</div>
 	</div>
-
-	<% if @member %>
-		<div class="row_title">参加表明</div>
-		<div class="join_form">
-			<div class="join_area">
-				<%= form_for @member, url: member_index_path do |f| %>
-					<%= f.hidden_field :kbn, value: 1 %>
-					<%= f.hidden_field :event_id, value: @comment.event_id %>
-					<%= f.hidden_field :uid, value: @comment.uid %>
-					<%= f.submit $NAME_JOIN[1], class: 'submit_button join_button join' %>
-				<% end %>
-			</div>
-			<div class="join_area">
-				<%= form_for @member, url: member_index_path do |f| %>
-					<%= f.hidden_field :kbn, value: 2 %>
-					<%= f.hidden_field :event_id, value: @comment.event_id %>
-					<%= f.hidden_field :uid, value: @comment.uid %>
-					<%= f.submit $NAME_JOIN[2], class: 'submit_button join_button go_astray' %>
-				<% end %>
-			</div>
-			<div class="join_area">
-				<%= form_for @member, url: member_index_path do |f| %>
-					<%= f.hidden_field :kbn, value: 3 %>
-					<%= f.hidden_field :event_id, value: @comment.event_id %>
-					<%= f.hidden_field :uid, value: @comment.uid %>
-					<%= f.submit $NAME_JOIN[3], class: 'submit_button join_button no_join' %>
-				<% end %>
-			</div>
-		</div>
+	<% if @event.close_time < DateTime.now %>
+			<div class="row_title">参加表明（回答期限切れ）</div>
 	<% else %>
-	<% end %>	
+		<% if @member %>
+			<div class="row_title">参加表明</div>
+			<div class="join_form">
+				<div class="join_area">
+					<%= form_for @member, url: member_index_path do |f| %>
+						<%= f.hidden_field :kbn, value: 1 %>
+						<%= f.hidden_field :event_id, value: @comment.event_id %>
+						<%= f.hidden_field :uid, value: @comment.uid %>
+						<%= f.submit $NAME_JOIN[1], class: 'submit_button join_button join' %>
+					<% end %>
+				</div>
+				<div class="join_area">
+					<%= form_for @member, url: member_index_path do |f| %>
+						<%= f.hidden_field :kbn, value: 2 %>
+						<%= f.hidden_field :event_id, value: @comment.event_id %>
+						<%= f.hidden_field :uid, value: @comment.uid %>
+						<%= f.submit $NAME_JOIN[2], class: 'submit_button join_button go_astray' %>
+					<% end %>
+				</div>
+				<div class="join_area">
+					<%= form_for @member, url: member_index_path do |f| %>
+						<%= f.hidden_field :kbn, value: 3 %>
+						<%= f.hidden_field :event_id, value: @comment.event_id %>
+						<%= f.hidden_field :uid, value: @comment.uid %>
+						<%= f.submit $NAME_JOIN[3], class: 'submit_button join_button no_join' %>
+					<% end %>
+				</div>
+			</div>
+		<% else %>
+		<% end %>	
+	<% end %>
 
 	<div class="row_title">コメント</div>
 	<% @comments.each do |comment| %>
