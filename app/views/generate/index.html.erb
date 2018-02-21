@@ -1,0 +1,6 @@
+<div class="row_title">アクセスキー</div>
+<%= text_field_tag(:token, @user.token, {readonly: true, class: 'token_field'}) %>
+<button class='copy_button' onclick="copyClick(document.getElementById('token').value)" >コピーする </button>
+<div class="button_area">
+	<%= link_to "キーを生成", new_generate_path, class: 'submit_button edit_button' %>
+</div>

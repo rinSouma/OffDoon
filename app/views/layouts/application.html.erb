@@ -27,7 +27,7 @@
 		<div class="main_right">
 			<% if @user %>
 				<div class="right_box">
-					<%= image_tag @user.avatar, class: 'icon_img' %> <%= @user.display_name %>さん
+					<%= link_to image_tag(@user.avatar, class: 'icon_img'), generate_index_path, class:'link_icon' %> <%= @user.display_name %>さん
 				</div>
 				<div class="right_box">
 					<%= link_to "ログアウト", logout_index_path, class:'logout' %>
