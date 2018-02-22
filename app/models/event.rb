@@ -26,4 +26,23 @@ class Event < ApplicationRecord
     end
   end
   
+  def self.search_api(params)
+    result = Event.all
+    result = result.where(id: params[:id]) if params[:id].present?
+    result = result.where("title like ?",  "%#{params[:title]}%") if params[:title].present?
+    result = result.where("id >= ?", params[:id_from]) if params[:id_from].present?
+    result = result.where("id <= ?", params[:id_to]) if params[:id_to].present?
+    result = result.where("updated_at >= ?", params[:update_from].to_time) if params[:update_from].present?
+    result = result.where("updated_at  <= ?", params[:update_to].to_time) if params[:update_to].present?
+    if params[:limit].present?
+      if params[:limit].to_i > 20
+        result = result.limit(20)
+      else
+        result = result.limit(params[:limit])
+      end
+    else
+      result = result.limit(10)
+    end
+    result
+  end
 end
