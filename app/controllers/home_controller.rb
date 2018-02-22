@@ -60,6 +60,7 @@ class HomeController < ApplicationController
   def update
     get_user_info
     @event = Event.find(params[:id])
+    @event.updated_at = Time.now
     if @event.update_attributes(event_params)
       if params['toot']
         url = request.url
