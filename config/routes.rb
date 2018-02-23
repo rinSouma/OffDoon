@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   #API用
   namespace :api, {format: 'json'} do
     namespace :v1 do
-      namespace :event do
+      namespace :events do
         get "/" , :action => "index"
       end
     end

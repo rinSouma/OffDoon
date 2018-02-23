@@ -1,4 +1,4 @@
-#OffDoon APIリファレンス
+# OffDoon APIリファレンス
 
 ---
 
@@ -12,7 +12,7 @@
 
 ## Event取得API
 
-> GET /api/v1/event
+> GET /api/v1/events
 
 #### HEAD
 

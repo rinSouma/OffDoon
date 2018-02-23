@@ -26,8 +26,8 @@ class Event < ApplicationRecord
     end
   end
   
-  def self.search_api(params)
-    result = Event.all
+  def self.search_api(params, user)
+    result = Event.search(user, false)
     result = result.where(id: params[:id]) if params[:id].present?
     result = result.where("title like ?",  "%#{params[:title]}%") if params[:title].present?
     result = result.where("id >= ?", params[:id_from]) if params[:id_from].present?
