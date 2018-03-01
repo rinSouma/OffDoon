@@ -77,24 +77,26 @@
 				<div class="join_area">
 					<%= form_for @member, url: member_index_path do |f| %>
 						<%= f.hidden_field :kbn, value: 1 %>
-						<%= f.hidden_field :event_id, value: @comment.event_id %>
-						<%= f.hidden_field :uid, value: @comment.uid %>
+						<%= f.hidden_field :event_id, value: @member.event_id %>
+						<%= f.hidden_field :uid, value: @member.uid %>
+						<%= f.hidden_field :limit, value: @event.limit %>
+						<%= f.hidden_field :count, value: @join.length %>
 						<%= f.submit $NAME_JOIN[1], class: 'submit_button join_button join' %>
 					<% end %>
 				</div>
 				<div class="join_area">
 					<%= form_for @member, url: member_index_path do |f| %>
 						<%= f.hidden_field :kbn, value: 2 %>
-						<%= f.hidden_field :event_id, value: @comment.event_id %>
-						<%= f.hidden_field :uid, value: @comment.uid %>
+						<%= f.hidden_field :event_id, value: @member.event_id %>
+						<%= f.hidden_field :uid, value: @member.uid %>
 						<%= f.submit $NAME_JOIN[2], class: 'submit_button join_button go_astray' %>
 					<% end %>
 				</div>
 				<div class="join_area">
 					<%= form_for @member, url: member_index_path do |f| %>
 						<%= f.hidden_field :kbn, value: 3 %>
-						<%= f.hidden_field :event_id, value: @comment.event_id %>
-						<%= f.hidden_field :uid, value: @comment.uid %>
+						<%= f.hidden_field :event_id, value: @member.event_id %>
+						<%= f.hidden_field :uid, value: @member.uid %>
 						<%= f.submit $NAME_JOIN[3], class: 'submit_button join_button no_join' %>
 					<% end %>
 				</div>
