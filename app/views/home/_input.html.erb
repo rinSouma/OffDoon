@@ -6,11 +6,16 @@
 	<%= f.text_field :place, placeholder: '場所', class:'input_text' %>
 	<%= f.text_field :url, placeholder: 'URL', class:'input_text' %>
 	<br>
-	開催日　：<%== sprintf(f.datetime_select(:date, {use_month_numbers: true, start_year: Date.today.year, end_year: Date.today.year + 10, date_separator: '%s', datetime_separator: '%s', time_separator: '%s'}, {class: 'date_time'}), '年', '月', '日', '時') + '分' %>
+	<% temp = DateTime.now %>
+	<% now_time = DateTime.new(temp.year, temp.month, temp.day, temp.hour, temp.min, 0, temp.offset)%>
+	<% max_time = DateTime.new(temp.year + 10, temp.month, temp.day, temp.hour, temp.min, 0, temp.offset)%>
+	<% @event.date = now_time if @event.date.blank? %>
+	開催日　：<%= f.datetime_local_field :date , {min: now_time, max: max_time, class: 'date_time'} %>
 	<br>
 	参加上限：<%= f.number_field :limit, {class:'input_number'} %>
 	<br>
-	回答期限：<%== sprintf(f.datetime_select(:close_time, {use_month_numbers: true, start_year: Date.today.year, end_year: Date.today.year + 10, date_separator: '%s', datetime_separator: '%s', time_separator: '%s'}, {class: 'date_time'}), '年', '月', '日', '時') + '分' %>
+	<% @event.close_time = now_time if @event.close_time.blank? %>
+	回答期限：<%= f.datetime_local_field :close_time , {min: now_time, max: max_time, class: 'date_time'} %>
 	<br>
 	<label class='input_radio'><%= f.radio_button :view, 0, :checked => true %><p class = 'radio_text'><%= $NAME_VIEW[0] %></p></label>
 	<br>
