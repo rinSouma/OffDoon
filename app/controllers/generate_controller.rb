@@ -7,11 +7,15 @@ class GenerateController < ApplicationController
   end
   
   def new
+    get_user_info
+    unless @user
+      redirect_to root_path
+      return
+    end
     require 'securerandom'
     token = nil
     loop do
       token = SecureRandom.hex(24)
-      p token
       user = User.find_by(token: token)
       if user.nil?
         break

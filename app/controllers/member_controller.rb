@@ -1,5 +1,10 @@
 class MemberController < ApplicationController
   def create
+    get_user_info
+    unless @user
+      redirect_to root_path
+      return
+    end
     if params[:member][:limit] then
       if params[:member][:limit].to_i < params[:member][:count].to_i + 1 then
         redirect_to home_path(params[:member][:event_id])
@@ -13,6 +18,11 @@ class MemberController < ApplicationController
   end
   
   def destroy
+    get_user_info
+    unless @user
+      redirect_to root_path
+      return
+    end
     member = Member.find(params[:id])
     member.destroy
     redirect_to home_path(member.event_id)

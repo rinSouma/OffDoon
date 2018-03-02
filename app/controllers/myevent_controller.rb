@@ -1,7 +1,11 @@
 class MyeventController < ApplicationController
   def index
     get_user_info
-    
+    unless @user
+      redirect_to root_path
+      return
+    end
+
     @events = Event.search(@user, true).includes(:members).where(members: {uid: @user.uid} ).left_joins(:user).order("events.date asc")
     
     @join = {}

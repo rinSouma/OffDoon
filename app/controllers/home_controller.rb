@@ -7,6 +7,10 @@ class HomeController < ApplicationController
   
   def new
     get_user_info
+    unless @user
+      redirect_to root_path
+      return
+    end
     @event = Event.new
   end
   
@@ -54,12 +58,28 @@ class HomeController < ApplicationController
   
   def edit
     get_user_info
+    unless @user
+      redirect_to root_path
+      return
+    end
     @event = Event.find(params[:id])
+    if @event.uid != @user.uid
+      redirect_to root_path
+      return
+    end
   end
   
   def update
     get_user_info
+    unless @user
+      redirect_to root_path
+      return
+    end
     @event = Event.find(params[:id])
+    if @event.uid != @user.uid
+      redirect_to root_path
+      return
+    end
     @event.updated_at = Time.now
     if @event.update_attributes(event_params)
       if params['toot']
@@ -74,7 +94,16 @@ class HomeController < ApplicationController
   end
   
   def destroy
+    get_user_info
+    unless @user
+      redirect_to root_path
+      return
+    end
     event = Event.find(params[:id])
+    if event.uid != @user.uid
+      redirect_to root_path
+      return
+    end
     event.destroy
     redirect_to root_path
   end
