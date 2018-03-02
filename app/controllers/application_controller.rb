@@ -14,9 +14,15 @@ class ApplicationController < ActionController::Base
         user_data = client.account(session[:id])
         #取得したユーザーデータをDBに登録する
         if user = User.find_or_initialize_by(uid: session[:uid])
+          #display_nameが設定されていない場合はIDを設定
+          if user_data.display_name.blank?
+            display_name = user_data.username
+          else
+            display_name = user_data.display_name
+          end
           user.update_attributes(
             uid: session[:uid],
-            display_name: user_data.display_name,
+            display_name: display_name,
             avatar: user_data.avatar_static,
             url: user_data.url,
             domain: domain
