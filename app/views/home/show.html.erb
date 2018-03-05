@@ -9,7 +9,7 @@
 	
 	<div class="table_row">
 		<div class="detail_column_left">内容</div>
-		<div class="detail_column_right"><%= simple_format(text_url_to_link(h(@event.detail)), {}, sanitize: false) %></div>
+		<div class="detail_column_right"><%= simple_format(text_url_to_link((@event.detail)), {}, sanitize: false) %></div>
 	</div>
 	<div class="table_row">
 		<div class="detail_column_left">場所</div>

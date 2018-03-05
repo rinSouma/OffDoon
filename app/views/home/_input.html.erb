@@ -1,9 +1,10 @@
+<%= javascript_include_tag 'nicEdit' %>
 <div class="content_body">
 	<h2><%= title %></h2>
 	<%= form_for @event, url: path do |f| %>
 	<%= f.text_field :title, placeholder: 'タイトル', class:'input_text' %>
-	<%= f.text_area  :detail, placeholder: '詳細', class:'input_text_area' %>
-	<%= f.text_field :place, placeholder: '場所', class:'input_text' %>
+	<%= f.text_area  :detail, placeholder: '詳細', class:'input_text_area nicEdit_text', id:'detail_area' %>
+	<%= f.text_field :place, placeholder: '場所', class:'input_text top_margin' %>
 	<%= f.text_field :url, placeholder: 'URL', class:'input_text' %>
 	<br>
 	<% temp = DateTime.now %>
@@ -38,3 +39,8 @@
 		<% end %>
 	<% end %>
 </div>
+<script type="text/javascript">
+	document.addEventListener('turbolinks:load', function() {
+		new nicEditor({iconsPath : '<%= asset_path 'nicEditorIcons.gif' %>', buttonList : ['fontSize','bold','italic','underline','strikethrough','hr','forecolor','bgcolor','removeformat']}).panelInstance('detail_area');
+	});
+</script>
