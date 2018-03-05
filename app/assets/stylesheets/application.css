@@ -189,7 +189,15 @@ div.content_body {
 	margin-bottom:20px;
 	resize: none;
 }
+.top_margin {
+	margin-top:20px;
+}
+.nicEdit-main{
+}
 
+.nicEdit-panelContain{
+     color:black;
+}
 .input_number {
 	width:50px;
 	padding:1px;
