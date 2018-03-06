@@ -2,7 +2,7 @@
 		<div class="detail_title"><%= @event.title %></div>
 		<div class="detail_icon"><%= image_tag @event.user.avatar, class: 'icon_img event_icon_img' %></div>
 		<div class="detail_info">
-			<div class="detail_date">開催日：<%= @event.date.strftime("%Y/%m/%d %H:%M") %></div>
+			<div class="detail_date">開催日：<%= @event.date.strftime("%Y/%m/%d (#{%w(日 月 火 水 木 金 土)[@event.date.wday]})　%H:%M") %></div>
 			<div class="detail_user">主催者：<%= link_to @event.user.display_name, @event.user.url, target: "_blank" %></div>
 		</div>
 	</div>
@@ -26,7 +26,7 @@
 
 	<div class="table_row">
 		<div class="detail_column_left">期限</div>
-		<div class="detail_column_right"><%= @event.close_time.strftime("%Y/%m/%d %H:%M") %></div>
+		<div class="detail_column_right"><%= @event.close_time.strftime("%Y/%m/%d (#{%w(日 月 火 水 木 金 土)[@event.close_time.wday]})　%H:%M") %></div>
 	</div>
 
 

@@ -5,7 +5,7 @@
 			<div class="event_icon"><%= image_tag @user_info[key].avatar, class: 'icon_img event_icon_img' %></div>
 			<div class="event_detail">
 				<div class="event_title"><%= event.title %></div>
-				<div class="event_date">開催日：<%= event.date.strftime("%Y/%m/%d %H:%M") %></div>
+				<div class="event_date">開催日：<%= event.date.strftime("%Y/%m/%d (#{%w(日 月 火 水 木 金 土)[event.date.wday]})　%H:%M") %></div>
 				<div class="event_user">主催者：<%=  @user_info[key].display_name %></div>
 			</div>
 		</div>
@@ -19,7 +19,7 @@
 			<div class="event_icon"><%= image_tag @user_info[key].avatar, class: 'icon_img event_icon_img' %></div>
 			<div class="event_detail">
 				<div class="event_title"><%= event.title %></div>
-				<div class="event_date">開催日：<%= event.date.strftime("%Y/%m/%d %H:%M") %></div>
+				<div class="event_date">開催日：<%= event.date.strftime("%Y/%m/%d (#{%w(日 月 火 水 木 金 土)[event.date.wday]})　%H:%M") %></div>
 				<div class="event_user">主催者：<%=  @user_info[key].display_name %></div>
 			</div>
 		</div>
@@ -33,7 +33,7 @@
 			<div class="event_icon"><%= image_tag @user_info[key].avatar, class: 'icon_img event_icon_img' %></div>
 			<div class="event_detail">
 				<div class="event_title"><%= event.title %></div>
-				<div class="event_date">開催日：<%= event.date.strftime("%Y/%m/%d %H:%M") %></div>
+				<div class="event_date">開催日：<%= event.date.strftime("%Y/%m/%d (#{%w(日 月 火 水 木 金 土)[event.date.wday]})　%H:%M") %></div>
 				<div class="event_user">主催者：<%=  @user_info[key].display_name %></div>
 			</div>
 		</div>
