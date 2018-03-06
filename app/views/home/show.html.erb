@@ -113,6 +113,7 @@
 				<div class="comment"><%= comment.comment %></div>
 				<div class="comment_user">
 					<%= link_to comment.user.display_name, comment.user.url, target: "_blank" %>
+					<span class="comment_date"><%= comment.created_at.strftime("%Y/%m/%d %H:%M") %></span>
 					<% if @comment && comment.uid == @user.uid %>
 						<%= link_to 'コメントを削除する', comment_path(comment), method: :delete,  class: "delete_link", data: {confirm: 'コメントを削除します'} %>
 					<% end %>

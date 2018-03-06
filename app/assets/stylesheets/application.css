@@ -433,7 +433,10 @@ div.content_body {
 	margin-top:0px;
 	margin-bottom:20px;
 }
-
+.comment_date {
+	margin-left:10px;
+	font-size:11px;
+}
 .delete_link {
 	margin-left:10px;
 	font-size:10px;
