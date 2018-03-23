@@ -2,7 +2,23 @@ class HomeController < ApplicationController
   PER = 5
   def index
     get_user_info
-    @events = Event.search(@user, true).page(params[:page]).per(PER).left_joins(:user).order("events.created_at desc")
+    @sorts_data = {"作成が新しい順"=>0,"作成が古い順"=>1,"開催日が早い順"=>2,"開催日が遅い順"=>3,"回答期限が近い順"=>4}
+    @sort_key = params[:sort]
+    @sort_key = 0 if @sort_key.blank?
+    case @sort_key
+    when "1" then
+      order = "events.created_at asc"
+    when "2" then
+      order = "events.date asc"
+    when "3" then
+      order = "events.date desc"
+    when "4" then
+      order = "events.close_time asc"
+    else
+      order = "events.created_at desc"
+    end
+    p order
+    @events = Event.search(@user, true).page(params[:page]).per(PER).left_joins(:user).order(order)
   end
   
   def new

@@ -517,7 +517,7 @@ div.content_body {
 .pagination {
 	margin:10px;
 	padding:0px;
-	display:table;
+	display:inline-table;
 	table-layout:fixed;
 	border:solid 2px rgb(80,88,110);
 	border-radius: 10px;
@@ -574,4 +574,18 @@ div.content_body {
 
 .affi {
 	margin: 40px 10px;
+}
+
+.sort_list{
+	margin:10px;
+	padding:4px 4px 6px 4px;
+	background-color:rgb(80,88,110);
+	color:white;
+	border:none;
+	border-radius: 6px;
+	width:140px;
+}
+.sort_form{
+	display:inline;
+	float:right;
 }

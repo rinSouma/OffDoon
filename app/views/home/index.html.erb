@@ -11,3 +11,6 @@
 		<% end %>
 	<% end %>	
 	<%= paginate @events %>
+	<%= form_tag('',enforce_utf8: false, method:'get', remote: 'true', class:"sort_form") do %>
+		<%= select_tag('sort', options_for_select(@sorts_data, @sort_key), class: "sort_list", onchange: "this.form.submit();") %>
+	<% end %>
