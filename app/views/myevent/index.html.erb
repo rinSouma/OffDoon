@@ -1,3 +1,8 @@
+	<%= form_tag('',enforce_utf8: false, method:'get', remote: 'true', class:"view_flg_form") do %>
+		<%= check_box_tag('view_flg', true, checked = @view_flg, class: "view_flg", onchange: "this.form.submit();") %>
+		過去のイベントを表示する
+	<% end %>
+
 	<div class="row_title">参加するイベント</div>
 	<% @join.each do |key, event| %>
 		<%= link_to(home_path(event), class:'event_link') do%>

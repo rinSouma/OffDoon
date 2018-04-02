@@ -6,7 +6,15 @@ class MyeventController < ApplicationController
       return
     end
 
-    @events = Event.search(@user, true).includes(:members).where(members: {uid: @user.uid} ).left_joins(:user).order("events.date asc")
+    @view_flg = params[:view_flg]
+      
+    if @view_flg == "true" then
+      @view_flg = true
+      @events = Event.search(@user, false).includes(:members).where(members: {uid: @user.uid} ).left_joins(:user).order("events.date asc")
+    else
+      @view_flg = false
+      @events = Event.search(@user, true).includes(:members).where(members: {uid: @user.uid} ).left_joins(:user).order("events.date asc")
+    end
     
     @join = {}
     @go_astray = {}
