@@ -7,6 +7,16 @@ class Event < ApplicationRecord
   validates :limit, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 200 }
     
   validates :url, allow_blank: true, format: /\A#{URI::regexp(%w(http https))}\z/
+  validate :date_check
+  
+  def date_check
+    if date.blank?
+      errors.add(:date, "を入力してください")
+    end
+    if close_time.blank?
+      errors.add(:close_time, "を入力してください")
+    end
+  end
   
   def self.search(user, date_flg)
     #ユーザ情報がある（ログインしている場合）はドメインチェック

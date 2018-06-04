@@ -17,7 +17,6 @@ class HomeController < ApplicationController
     else
       order = "events.created_at desc"
     end
-    p order
     @events = Event.search(@user, true).page(params[:page]).per(PER).left_joins(:user).order(order)
   end
   

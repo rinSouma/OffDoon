@@ -2,7 +2,11 @@
 		<div class="detail_title"><%= @event.title %></div>
 		<div class="detail_icon"><%= image_tag @event.user.avatar, class: 'icon_img event_icon_img' %></div>
 		<div class="detail_info">
-			<div class="detail_date">開催日：<%= @event.date.strftime("%Y/%m/%d (#{%w(日 月 火 水 木 金 土)[@event.date.wday]})　%H:%M") %></div>
+			<% if @event.date.present? %>
+				<div class="detail_date">開催日：<%= @event.date.strftime("%Y/%m/%d (#{%w(日 月 火 水 木 金 土)[@event.date.wday]})　%H:%M") %></div>
+			<% else %>
+				<div class="detail_date">開催日：</div>
+			<% end %>
 			<div class="detail_user">主催者：<%= link_to @event.user.display_name, @event.user.url, target: "_blank" %></div>
 		</div>
 	</div>
@@ -26,9 +30,13 @@
 
 	<div class="table_row">
 		<div class="detail_column_left">期限</div>
-		<div class="detail_column_right"><%= @event.close_time.strftime("%Y/%m/%d (#{%w(日 月 火 水 木 金 土)[@event.close_time.wday]})　%H:%M") %></div>
+		
+		<% if @event.close_time.present? %>
+			<div class="detail_column_right"><%= @event.close_time.strftime("%Y/%m/%d (#{%w(日 月 火 水 木 金 土)[@event.close_time.wday]})　%H:%M") %></div>
+		<% else %>
+			<div class="detail_column_right"></div>
+		<% end %>
 	</div>
-
 
 	<div class="row_title">参加状況</div>
 	<div class="member_list_title">
@@ -68,41 +76,44 @@
 			</ul>
 		</div>
 	</div>
-	<% if @event.close_time < DateTime.now %>
-			<div class="row_title">参加表明（回答期限切れ）</div>
-	<% else %>
-		<% if @member %>
-			<div class="row_title">参加表明</div>
-			<div class="join_form">
-				<div class="join_area">
-					<%= form_for @member, url: member_index_path do |f| %>
-						<%= f.hidden_field :kbn, value: 1 %>
-						<%= f.hidden_field :event_id, value: @member.event_id %>
-						<%= f.hidden_field :uid, value: @member.uid %>
-						<%= f.hidden_field :limit, value: @event.limit %>
-						<%= f.hidden_field :count, value: @join.length %>
-						<%= f.submit $NAME_JOIN[1], class: 'submit_button join_button join' %>
-					<% end %>
-				</div>
-				<div class="join_area">
-					<%= form_for @member, url: member_index_path do |f| %>
-						<%= f.hidden_field :kbn, value: 2 %>
-						<%= f.hidden_field :event_id, value: @member.event_id %>
-						<%= f.hidden_field :uid, value: @member.uid %>
-						<%= f.submit $NAME_JOIN[2], class: 'submit_button join_button go_astray' %>
-					<% end %>
-				</div>
-				<div class="join_area">
-					<%= form_for @member, url: member_index_path do |f| %>
-						<%= f.hidden_field :kbn, value: 3 %>
-						<%= f.hidden_field :event_id, value: @member.event_id %>
-						<%= f.hidden_field :uid, value: @member.uid %>
-						<%= f.submit $NAME_JOIN[3], class: 'submit_button join_button no_join' %>
-					<% end %>
-				</div>
-			</div>
+	<% if @event.close_time.present? %>
+		<% if @event.close_time < DateTime.now %>
+				<div class="row_title">参加表明（回答期限切れ）</div>
 		<% else %>
-		<% end %>	
+			<% if @member %>
+				<div class="row_title">参加表明</div>
+				<div class="join_form">
+					<div class="join_area">
+						<%= form_for @member, url: member_index_path do |f| %>
+							<%= f.hidden_field :kbn, value: 1 %>
+							<%= f.hidden_field :event_id, value: @member.event_id %>
+							<%= f.hidden_field :uid, value: @member.uid %>
+							<%= f.hidden_field :limit, value: @event.limit %>
+							<%= f.hidden_field :count, value: @join.length %>
+							<%= f.submit $NAME_JOIN[1], class: 'submit_button join_button join' %>
+						<% end %>
+					</div>
+					<div class="join_area">
+						<%= form_for @member, url: member_index_path do |f| %>
+							<%= f.hidden_field :kbn, value: 2 %>
+							<%= f.hidden_field :event_id, value: @member.event_id %>
+							<%= f.hidden_field :uid, value: @member.uid %>
+							<%= f.submit $NAME_JOIN[2], class: 'submit_button join_button go_astray' %>
+						<% end %>
+					</div>
+					<div class="join_area">
+						<%= form_for @member, url: member_index_path do |f| %>
+							<%= f.hidden_field :kbn, value: 3 %>
+							<%= f.hidden_field :event_id, value: @member.event_id %>
+							<%= f.hidden_field :uid, value: @member.uid %>
+							<%= f.submit $NAME_JOIN[3], class: 'submit_button join_button no_join' %>
+						<% end %>
+					</div>
+				</div>
+			<% else %>
+				<div class="row_title">参加したい場合はログインしてください</div>
+			<% end %>	
+		<% end %>
 	<% end %>
 
 	<div class="row_title">コメント</div>
