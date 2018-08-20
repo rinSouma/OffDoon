@@ -13,11 +13,15 @@ class HomeController < ApplicationController
     when "3" then
       order = "events.date desc"
     when "4" then
-      order = "events.close_time asc"
+      order = "events.close_time >= ? desc, events.close_time asc"
     else
       order = "events.created_at desc"
     end
-    @events = Event.search(@user, true).page(params[:page]).per(PER).left_joins(:user).order(order)
+    if @sort_key == "4" then
+      @events = Event.search(@user, true).page(params[:page]).per(PER).left_joins(:user).order([order, DateTime.now])
+    else
+      @events = Event.search(@user, true).page(params[:page]).per(PER).left_joins(:user).order(order)
+    end
   end
   
   def new
