@@ -100,6 +100,13 @@ class HomeController < ApplicationController
       return
     end
     @event.updated_at = Time.now
+
+    #未定チェックがあれば開催日は2999/12/31
+    e_params = event_params
+    if params['undecided']
+      temp = DateTime.now
+      @event.date = DateTime.new(2999, 12, 31, 23, 59, 59, temp.offset)
+    end
     if @event.update_attributes(event_params)
       if params['toot']
         url = request.url
@@ -129,12 +136,21 @@ class HomeController < ApplicationController
   
   private
   def event_params
-    params[:event].permit(:title, :detail, :place, :url, :date, :limit, :close_time, :view)
+    if params['undecided']
+      params[:event].permit(:title, :detail, :place, :url, :limit, :close_time, :view)
+    else
+      params[:event].permit(:title, :detail, :place, :url, :date, :limit, :close_time, :view)
+    end
   end
   
   def insert_event
     ActiveRecord::Base.transaction do
       @event = Event.new(event_params)
+      #未定チェックがあれば開催日は2999/12/31
+      if params['undecided']
+        temp = DateTime.now
+        @event.date = DateTime.new(2999, 12, 31, 23, 59, 59, temp.offset)
+      end
       @event.uid = @user.uid
       @event.save!
       @member = Member.new()

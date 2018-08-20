@@ -10,9 +10,6 @@ class Event < ApplicationRecord
   validate :date_check
   
   def date_check
-    if date.blank?
-      errors.add(:date, "を入力してください")
-    end
     if close_time.blank?
       errors.add(:close_time, "を入力してください")
     end

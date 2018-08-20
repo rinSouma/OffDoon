@@ -10,7 +10,17 @@
 			<div class="event_icon"><%= image_tag @user_info[key].avatar, class: 'icon_img event_icon_img' %></div>
 			<div class="event_detail">
 				<div class="event_title"><%= event.title %></div>
-				<div class="event_date">開催日：<%= event.date.strftime("%Y/%m/%d (#{%w(日 月 火 水 木 金 土)[event.date.wday]})　%H:%M") %></div>
+				<% if event.date.present? %>
+					<% temp = DateTime.now %>
+					<% und_time = DateTime.new(2999, 12, 31, 23, 59, 59, temp.offset)%>
+					<% if event.date == und_time %>
+						<div class="event_date">開催日：未定</div>
+					<% else %>
+						<div class="event_date">開催日：<%= event.date.strftime("%Y/%m/%d (#{%w(日 月 火 水 木 金 土)[event.date.wday]})　%H:%M") %></div>
+					<% end %>
+				<% else %>
+						<div class="event_date">開催日：未定</div>
+				<% end %>
 				<div class="event_user">主催者：<%=  @user_info[key].display_name %></div>
 			</div>
 		</div>
@@ -24,7 +34,17 @@
 			<div class="event_icon"><%= image_tag @user_info[key].avatar, class: 'icon_img event_icon_img' %></div>
 			<div class="event_detail">
 				<div class="event_title"><%= event.title %></div>
-				<div class="event_date">開催日：<%= event.date.strftime("%Y/%m/%d (#{%w(日 月 火 水 木 金 土)[event.date.wday]})　%H:%M") %></div>
+				<% if event.date.present? %>
+					<% temp = DateTime.now %>
+					<% und_time = DateTime.new(2999, 12, 31, 23, 59, 59, temp.offset)%>
+					<% if event.date == und_time %>
+						<div class="event_date">開催日：未定</div>
+					<% else %>
+						<div class="event_date">開催日：<%= event.date.strftime("%Y/%m/%d (#{%w(日 月 火 水 木 金 土)[event.date.wday]})　%H:%M") %></div>
+					<% end %>
+				<% else %>
+						<div class="event_date">開催日：未定</div>
+				<% end %>
 				<div class="event_user">主催者：<%=  @user_info[key].display_name %></div>
 			</div>
 		</div>
@@ -38,7 +58,17 @@
 			<div class="event_icon"><%= image_tag @user_info[key].avatar, class: 'icon_img event_icon_img' %></div>
 			<div class="event_detail">
 				<div class="event_title"><%= event.title %></div>
-				<div class="event_date">開催日：<%= event.date.strftime("%Y/%m/%d (#{%w(日 月 火 水 木 金 土)[event.date.wday]})　%H:%M") %></div>
+				<% if event.date.present? %>
+					<% temp = DateTime.now %>
+					<% und_time = DateTime.new(2999, 12, 31, 23, 59, 59, temp.offset)%>
+					<% if event.date == und_time %>
+						<div class="event_date">開催日：未定</div>
+					<% else %>
+						<div class="event_date">開催日：<%= event.date.strftime("%Y/%m/%d (#{%w(日 月 火 水 木 金 土)[event.date.wday]})　%H:%M") %></div>
+					<% end %>
+				<% else %>
+						<div class="event_date">開催日：未定</div>
+				<% end %>
 				<div class="event_user">主催者：<%=  @user_info[key].display_name %></div>
 			</div>
 		</div>
