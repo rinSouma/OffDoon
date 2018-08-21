@@ -13,7 +13,7 @@
 	<% min_time = DateTime.new(temp.year - 1, temp.month, temp.day, temp.hour, temp.min, 0, temp.offset)%>
 	<% und_time = DateTime.new(2999, 12, 31, 23, 59, 59, temp.offset)%>
 	<% @event.date = now_time + 1.day if @event.date.blank? %>
-	<% @event.date = now_time + 1.day if @event.date = und_time %>
+	<% @event.date = now_time + 1.day if @event.date == und_time %>
 	開催日　：<%= f.datetime_local_field :date , {min: now_time, max: max_time, class: 'date_time'} %>
 	<%= check_box_tag 'undecided', true, false, {} %>
 	<%= label_tag 'undecided', "未定" %>
