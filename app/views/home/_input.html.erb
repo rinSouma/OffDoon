@@ -12,10 +12,11 @@
 	<% max_time = DateTime.new(temp.year + 10, 12, 31, 23, 59, 0, temp.offset)%>
 	<% min_time = DateTime.new(temp.year - 1, temp.month, temp.day, temp.hour, temp.min, 0, temp.offset)%>
 	<% und_time = DateTime.new(2999, 12, 31, 23, 59, 59, temp.offset)%>
+	<% flg = true if @event.date == und_time %>
 	<% @event.date = now_time + 1.day if @event.date.blank? %>
 	<% @event.date = now_time + 1.day if @event.date == und_time %>
 	開催日　：<%= f.datetime_local_field :date , {min: now_time, max: max_time, class: 'date_time'} %>
-	<%= check_box_tag 'undecided', true, false, {} %>
+	<%= check_box_tag 'undecided', true, flg, {} %>
 	<%= label_tag 'undecided', "未定" %>
 	<br>
 	参加上限：<%= f.number_field :limit, {class:'input_number'} %>
