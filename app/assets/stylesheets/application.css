@@ -663,7 +663,7 @@ div.base{
 }
 
 div.body{
-	padding: 10px 20px;
+	padding: 10px 5px;
 	min-height:100%;
 	overflow: hidden;
 }
@@ -895,15 +895,15 @@ div.content_body {
 }
 
 .row_title {
-	width:90%;
-	margin:10px 10px 4px 10px;
+	width:88%;
+	margin:10px 0px 4px 10px;
 	background-color:rgb(80,88,110);
 	border-right:solid 2px rgb(80,88,110);
 }
 
 .member_list_title {
 	display:table;
-	width:90%;
+	width:94%;
 	margin-left:10px;
 	border-collapse: collapse;
 	table-layout: fixed;
@@ -913,7 +913,7 @@ div.content_body {
 
 .member_list_body {
 	display:table;
-	width:90%;
+	width:94%;
 	margin-left:10px;
 	border-collapse: collapse;
 	table-layout: fixed;
@@ -1014,7 +1014,7 @@ div.content_body {
 
 .join_form {
 	display:table;
-	width:90%;
+	width:94%;
 	margin-left:10px;
 	border-collapse: collapse;
 	table-layout: fixed;
@@ -1040,7 +1040,7 @@ div.content_body {
 	padding:10px 6px 6px 6px;
 	margin: auto;
 	border-radius: 10px;
-	font-size:18px;
+	font-size:14px;
 	font-weight: 500;
 }
 
