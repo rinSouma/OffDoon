@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180130042235) do
+ActiveRecord::Schema.define(version: 20181227100712) do
+
+  create_table "affiliates", force: :cascade do |t|
+    t.string "itemName"
+    t.string "catchcopy"
+    t.string "itemCode"
+    t.string "itemPrice"
+    t.string "itemCaption"
+    t.string "itemUrl"
+    t.string "affiliateUrl"
+    t.string "smallImageUrls"
+    t.string "mediumImageUrls"
+    t.string "taxFlag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.string "comment"
