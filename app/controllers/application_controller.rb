@@ -7,6 +7,9 @@ class ApplicationController < ActionController::Base
   
   def get_user_info
     #トークンを使ってユーザ情報を取得（できていればログイン済み）
+    affi = Affiliate.all.order("RANDOM()")
+    @affi_data = affi.first
+
     if session[:uid] != nil
       _, domain = session[:uid].split('@')
       client = Mastodon::REST::Client.new(base_url: "https://#{domain}", bearer_token: session[:token])

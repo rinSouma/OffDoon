@@ -566,6 +566,19 @@ div.content_body {
 	margin: 40px 10px;
 }
 
+.affi_link{
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+}
+.affi_img{
+	margin-top:10px;
+}
+.affi_title{
+	margin-top:10px;
+	font-size:12px;
+}
 .sort_list{
 	margin:10px;
 	padding:4px 4px 6px 4px;
@@ -1148,6 +1161,19 @@ div.content_body {
 
 .affi {
 	margin: 40px 10px;
+}
+.affi_link{
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+}
+.affi_img{
+	margin-top:10px;
+}
+.affi_title{
+	margin-top:10px;
+	font-size:12px;
 }
 
 .sort_list{

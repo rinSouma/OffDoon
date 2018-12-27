@@ -48,7 +48,19 @@
 			<% end %>
 			
 			<div class="affi">
-				ここにアフィを置きたいやつ
+				<% if @affi_data %>
+					<div style="font-size:10px; text-align: center;">スポンサードリンク</div>
+					<%= link_to(@affi_data.affiliateUrl, class:'affi_link', target:'_blank') do%>
+						<div class="affi_img">
+							<%= image_tag @affi_data.mediumImageUrls %>
+						</div>
+						<div class="affi_title">
+							<%= @affi_data.itemName %>
+						</div>
+					<% end %>
+				<% else %>
+					ここにアフィを置きたいやつ
+				<% end%>
 			</div>
 
 			<div class="right_box">
